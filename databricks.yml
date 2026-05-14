@@ -1,0 +1,69 @@
+bundle:
+  name: agent_langgraph_advanced_mcp
+  engine: direct
+
+resources:
+  apps:
+    agent_langgraph_advanced_mcp:
+      name: "mcp-agent-app"
+      description: "LangGraph agent application with short-term and long-term memory"
+      source_code_path: ./
+      user_api_scopes:
+        - mcp.external
+        - mcp.genie
+      config:
+        command: ["uv", "run", "start-app"]
+        env:
+          - name: MLFLOW_TRACKING_URI
+            value: "databricks"
+          - name: MLFLOW_REGISTRY_URI
+            value: "databricks-uc"
+          - name: API_PROXY
+            value: "http://localhost:8000/invocations"
+          - name: CHAT_APP_PORT
+            value: "3000"
+          - name: CHAT_PROXY_TIMEOUT_SECONDS
+            value: "300"
+          - name: MLFLOW_EXPERIMENT_ID
+            value_from: "experiment"
+          - name: LAKEBASE_AUTOSCALING_ENDPOINT
+            value_from: "postgres"
+          - name: DATABRICKS_EMBEDDING_ENDPOINT
+            value: "databricks-gte-large-en"
+
+      # Resources which this app has access to
+      resources:
+        - name: 'experiment'
+          experiment:
+            experiment_id: "3075609125705777"
+            permission: 'CAN_MANAGE'
+        - name: 'postgres'
+          postgres:
+            branch: "projects/mcp-agent-lakebase/branches/mcp-agent-lakebase-branch"
+            database: "projects/mcp-agent-lakebase/branches/mcp-agent-lakebase-branch/databases/db-9xkf-oeq2p67m5r"
+            permission: 'CAN_CONNECT_AND_CREATE'
+        - name: mcp_agent_asana
+          uc_securable:
+            securable_full_name: mcp_agent_asana
+            securable_type: CONNECTION
+            permission: USE_CONNECTION
+        - name: billable_usage_space
+          genie_space:
+            name: billable usage space
+            space_id: 01f147c9b6da1dbd826b7018cdd593fe
+            permission: CAN_RUN
+targets:
+  dev:
+    mode: development
+    default: true
+    # workspace:
+    #   host: https://...
+
+  prod:
+    mode: production
+    # workspace:
+    #   host: https://...
+    resources:
+      apps:
+        agent_langgraph_advanced:
+          name: agent-langgraph-advanced

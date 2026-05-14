@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "env -u OTEL_EXPORTER_OTLP_ENDPOINT -u OTEL_EXPORTER_OTLP_PROTOCOL -u OTEL_EXPORTER_OTLP_HEADERS -u OTEL_EXPORTER_OTLP_TRACES_ENDPOINT -u OTEL_EXPORTER_OTLP_TRACES_PROTOCOL -u OTEL_EXPORTER_OTLP_TRACES_HEADERS -u OTEL_TRACES_EXPORTER -u OTEL_METRICS_EXPORTER -u OTEL_LOGS_EXPORTER -u OTEL_RESOURCE_ATTRIBUTES DATABRICKS_CONFIG_PROFILE=fevm MLFLOW_TRACKING_URI=databricks MLFLOW_EXPERIMENT_ID=4382070412402364 python -c \"from mlflow.claude_code.hooks import stop_hook_handler; stop_hook_handler()\""
+          }
+        ]
+      }
+    ]
+  },
+  "environment": {
+    "MLFLOW_CLAUDE_TRACING_ENABLED": "true",
+    "MLFLOW_TRACKING_URI": "databricks",
+    "MLFLOW_EXPERIMENT_ID": "4382070412402364",
+    "DATABRICKS_CONFIG_PROFILE": "fevm"
+  }
+}
