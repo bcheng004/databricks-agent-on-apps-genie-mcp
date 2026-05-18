@@ -98,7 +98,7 @@ databricks bundle run
 
 Arguments:
 
-- `agent_langgraph_advanced_mcp` *(positional)* — bundle resource name to run
+- `agent_langgraph_advanced_genie` *(positional)* — bundle resource name to run
 - `--profile <profile>` — Databricks CLI profile
 
 > `grant-lakebase-permissions` has to run *after* the bundle deploy because the app's service principal client ID only exists once the app is created.

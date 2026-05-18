@@ -1,10 +1,10 @@
 bundle:
-  name: agent_langgraph_advanced_mcp
+  name: agent_langgraph_advanced_genie
   engine: direct
 
 resources:
   apps:
-    agent_langgraph_advanced_mcp:
+    agent_langgraph_advanced_genie:
       name: "test-hackathon-app"
       description: "LangGraph agent application with short-term and long-term memory"
       source_code_path: ./
