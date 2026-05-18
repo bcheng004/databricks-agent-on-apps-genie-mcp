@@ -1,15 +1,14 @@
 bundle:
-  name: agent_langgraph_advanced_mcp
+  name: agent_langgraph_advanced_genie
   engine: direct
 
 resources:
   apps:
-    agent_langgraph_advanced_mcp:
-      name: "mcp-agent-app"
+    agent_langgraph_advanced_genie:
+      name: "test-hackathon-app"
       description: "LangGraph agent application with short-term and long-term memory"
       source_code_path: ./
       user_api_scopes:
-        - mcp.external
         - mcp.genie
       config:
         command: ["uv", "run", "start-app"]
@@ -39,14 +38,9 @@ resources:
             permission: 'CAN_MANAGE'
         - name: 'postgres'
           postgres:
-            branch: "projects/mcp-agent-lakebase/branches/mcp-agent-lakebase-branch"
-            database: "projects/mcp-agent-lakebase/branches/mcp-agent-lakebase-branch/databases/db-9xkf-oeq2p67m5r"
+            branch: "projects/lakebase-hack/branches/lakebase-hack-branch"
+            database: "projects/lakebase-hack/branches/lakebase-hack-branch/databases/databricks-postgres"
             permission: 'CAN_CONNECT_AND_CREATE'
-        - name: mcp_agent_asana
-          uc_securable:
-            securable_full_name: mcp_agent_asana
-            securable_type: CONNECTION
-            permission: USE_CONNECTION
         - name: billable_usage_space
           genie_space:
             name: billable usage space
