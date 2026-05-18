@@ -4,6 +4,10 @@
   <img src="assets/databricks-mark.svg" alt="Databricks" height="40" />
 </p>
 
+
+https://github.com/user-attachments/assets/e75480b7-70e9-4d10-9e8f-b86bda6e3b83
+
+
 Based on the [agent-langgraph-advanced app template](https://github.com/databricks/app-templates/tree/main/agent-langgraph-advanced).
 
 ## Local development
