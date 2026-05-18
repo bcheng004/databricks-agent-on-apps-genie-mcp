@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 mlflow.langchain.autolog()
 logging.getLogger("mlflow.utils.autologging_utils").setLevel(logging.ERROR)
 
-LLM_ENDPOINT_NAME = "databricks-claude-sonnet-4-6"
+LLM_ENDPOINT_NAME = "databricks-claude-opus-4-7"
 LAKEBASE_CONFIG = init_lakebase_config()
 
 
@@ -105,7 +105,13 @@ async def stream_handler(
     if not user_id:
         logger.warning("No user_id provided - memory features will not be available")
 
-    config: dict[str, Any] = {"configurable": {"thread_id": thread_id}}
+    # Bump LangGraph's recursion_limit (default 25) so long polling loops
+    # against the Genie MCP tools (poll_response_* called many times in a
+    # row) don't trip GraphRecursionError before reaching a terminal status.
+    config: dict[str, Any] = {
+        "configurable": {"thread_id": thread_id},
+        "recursion_limit": 200,
+    }
     if user_id:
         config["configurable"]["user_id"] = user_id
 
