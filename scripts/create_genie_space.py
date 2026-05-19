@@ -96,9 +96,7 @@ def add_genie_space_to_app(space_id: str, title: str) -> None:
         if isinstance(r, dict) and "genie_space" in r
     ]
     indices_to_drop = [
-        i
-        for i, r in enumerate(resources)
-        if isinstance(r, dict) and "genie_space" in r
+        i for i, r in enumerate(resources) if isinstance(r, dict) and "genie_space" in r
     ]
     for i in reversed(indices_to_drop):
         del resources[i]
@@ -253,63 +251,27 @@ def main() -> None:
         "data_sources": {
             "tables": [
                 {
-                    "identifier": "system.billing.usage",
+                    "identifier": "samples.nyctaxi.trips",
                     "column_configs": [
-                        {"column_name": "account_id", "enable_format_assistance": True},
                         {
-                            "column_name": "billing_origin_product",
-                            "enable_format_assistance": True,
-                            "enable_entity_matching": True,
-                        },
-                        {
-                            "column_name": "cloud",
-                            "enable_format_assistance": True,
-                            "enable_entity_matching": True,
-                        },
-                        {"column_name": "custom_tags"},
-                        {"column_name": "identity_metadata"},
-                        {
-                            "column_name": "ingestion_date",
-                            "enable_format_assistance": True,
-                        },
-                        {"column_name": "product_features"},
-                        {"column_name": "record_id", "enable_format_assistance": True},
-                        {
-                            "column_name": "record_type",
-                            "enable_format_assistance": True,
-                            "enable_entity_matching": True,
-                        },
-                        {
-                            "column_name": "sku_name",
-                            "enable_format_assistance": True,
-                            "enable_entity_matching": True,
-                        },
-                        {"column_name": "usage_date", "enable_format_assistance": True},
-                        {
-                            "column_name": "usage_end_time",
-                            "enable_format_assistance": True,
-                        },
-                        {"column_name": "usage_metadata"},
-                        {
-                            "column_name": "usage_quantity",
+                            "column_name": "dropoff_zip",
                             "enable_format_assistance": True,
                         },
                         {
-                            "column_name": "usage_start_time",
+                            "column_name": "fare_amount",
+                            "enable_format_assistance": True,
+                        },
+                        {"column_name": "pickup_zip", "enable_format_assistance": True},
+                        {
+                            "column_name": "tpep_dropoff_datetime",
                             "enable_format_assistance": True,
                         },
                         {
-                            "column_name": "usage_type",
+                            "column_name": "tpep_pickup_datetime",
                             "enable_format_assistance": True,
-                            "enable_entity_matching": True,
                         },
                         {
-                            "column_name": "usage_unit",
-                            "enable_format_assistance": True,
-                            "enable_entity_matching": True,
-                        },
-                        {
-                            "column_name": "workspace_id",
+                            "column_name": "trip_distance",
                             "enable_format_assistance": True,
                         },
                     ],
