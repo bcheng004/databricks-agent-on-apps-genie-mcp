@@ -50,7 +50,7 @@ def init_mcp_client(workspace_client: WorkspaceClient) -> DatabricksMultiServerM
         [
             DatabricksMCPServer(
                 name="genie",
-                url=f"{host_name}/api/2.0/mcp/genie/01f152d8da0a1d81b0de5a64583599b1",
+                url=f"{host_name}/api/2.0/mcp/genie/01f153cb61361d95829b8ad8bd1bb931",
                 workspace_client=workspace_client,
                 sse_read_timeout=600,
             ),

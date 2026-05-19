@@ -5,7 +5,7 @@
 </p>
 
 
-https://github.com/user-attachments/assets/e75480b7-70e9-4d10-9e8f-b86bda6e3b83
+https://github.com/user-attachments/assets/b8d78543-a91e-4b22-973c-a7fd568d9b40
 
 
 Based on the [agent-langgraph-advanced app template](https://github.com/databricks/app-templates/tree/main/agent-langgraph-advanced).
